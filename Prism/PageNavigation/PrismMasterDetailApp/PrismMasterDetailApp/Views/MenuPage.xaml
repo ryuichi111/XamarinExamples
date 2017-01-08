@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrismMasterDetailApp.Views.MenuPage"
+             Title="Menu">
+	<StackLayout>
+		<Label Text="Menu" FontSize="18">
+			<Label.Margin>
+				<!-- iOSはトップに 20 の余白が必要 -->
+				<OnPlatform x:TypeArguments="Thickness"
+					iOS="20, 20, 20, 20"
+					Android="20, 0, 20, 20"
+					WinPhone="20, 0, 20, 20" />
+			</Label.Margin>
+		</Label>
+		<ListView ItemsSource="{Binding Menus}"
+			SelectedItem="{Binding SelectedMenu,Mode=TwoWay}"
+			VerticalOptions="FillAndExpand">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+          			<ViewCell>
+						<StackLayout Orientation="Horizontal">
+							<Label Text="{Binding Title}" HorizontalOptions="FillAndExpand" />
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>

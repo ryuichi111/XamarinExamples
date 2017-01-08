@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+	xmlns:Views="clr-namespace:PrismMasterDetailApp.Views;assembly=PrismMasterDetailApp"
+	prism:ViewModelLocator.AutowireViewModel="True" 
+	x:Class="PrismMasterDetailApp.Views.MasterDetailRootPage">
+
+	<MasterDetailPage.Master>
+    	<Views:MenuPage />
+  	</MasterDetailPage.Master>
+
+	<MasterDetailPage.Detail>
+    	<ContentPage Title="" />
+  	</MasterDetailPage.Detail>
+	
+</MasterDetailPage>
