@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+	prism:ViewModelLocator.AutowireViewModel="True" 
+	x:Class="UseDatePicker.Views.MainPage" 
+	Title="MainPage">
+	<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+		<Label Text="{Binding SelectedDate,StringFormat='{0:yyyy/MM/dd}が選択されています'}" />
+		<DatePicker MinimumDate="{Binding MinDate}" 
+					MaximumDate="{Binding MaxDate}" 
+					Date="{Binding SelectedDate}"
+					Format="yyyy/MM/dd" />
+		<Button Text="add day" Command="{Binding AddDayCommand}" />
+		<Button Text="subtract day" Command="{Binding SubtractDayCommand}" />
+	</StackLayout>
+</ContentPage>
