@@ -1,0 +1,7 @@
+int drawable sfclosebutton 0x7f020000
+int drawable styleinfo 0x7f020001
+int id Itemname 0x7f040001
+int id icon 0x7f040000
+int layout customizedview 0x7f030000
+int layout customizedview1 0x7f030001
+int layout sfautocomplete_layout 0x7f030002
