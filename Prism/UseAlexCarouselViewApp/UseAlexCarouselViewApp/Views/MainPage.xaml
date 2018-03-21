@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="UseAlexCarouselViewApp.Views.MainPage"
+             Title="{Binding Title}">
+
+    <StackLayout>
+        <Label Text="Hello" />
+        <Editor BackgroundColor="Yellow" />
+
+        <cv:CarouselViewControl
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Position="0"
+            ShowIndicators="True"
+            ShowArrows="True"
+            ItemsSource="{Binding CarouselPageInfo}">
+            <cv:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{Binding BackColor}">
+                        <Label Text="{Binding Name}" TextColor="{Binding ForeColor}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </cv:CarouselViewControl.ItemTemplate>
+        </cv:CarouselViewControl>
+    </StackLayout>
+
+</ContentPage>
