@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:SfCal="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:cvt="clr-namespace:UseSfCalendarWithPrism.Converters"
+             x:Class="UseSfCalendarWithPrism.Views.MainPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cvt:SelectionModeConverter x:Key="SelectionModeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <Button Text="次月へ" Command="{Binding ForwardCommand}" />
+                <Button Text="前月へ" Command="{Binding BackwardCommand}" />
+
+                <Picker SelectedItem="{Binding SelectionMode, Mode=TwoWay}">
+                    <Picker.Items>
+                        <x:String>SingleSelection</x:String>
+                        <x:String>MultiSelection</x:String>
+                        <x:String>RangeSelection</x:String>
+                        <x:String>MultiRangeSelection</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <SfCal:SfCalendar x:Name="calendar" 
+                              ShowInlineEvents="True"
+                              MinDate="{Binding MinDate}"
+                              MaxDate="{Binding MaxDate}"
+                              BlackoutDates="{Binding BlackoutDates}"
+                              DataSource="{Binding CalendarEventCollection}"
+                              SelectionMode="{Binding SelectionMode, Mode=OneWay,Converter={StaticResource SelectionModeConverter}}">
+                <SfCal:SfCalendar.Behaviors>
+                    <b:EventToCommandBehavior EventName="MonthChanged" 
+                                          Command="{Binding MonthChangedCommand}"
+                                          EventArgsParameterPath="args.CurrentValue" />
+                </SfCal:SfCalendar.Behaviors>
+            </SfCal:SfCalendar>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
